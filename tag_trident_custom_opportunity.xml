@@ -6,22 +6,26 @@
             <field name="model">crm.lead</field>
             <field eval="1" name="priority"/>
             <field name="arch" type="xml">
- <tree string="Opportunities" fonts="bold:message_unread==True" colors="gray:probability == 100;red:date_deadline and (date_deadline &lt; current_date)">
+ <tree string="Opportunities" fonts="bold:message_unread==True" colors="gray:probability == 100;red:date_deadline and (date_deadline &lt; current_date)">     
+                    <field name="date_action"/>
+                    <field name="name" string="Opportunity"/>
+                    <field name="contact_name"/>
+                    <field name="title_action"/>
+                    <field name="user_id"/>
+                    <field name="section_id" groups="base.group_multi_salesteams"/>
                     <field name="date_deadline" invisible="1"/>
                     <field name="create_date" invisible="1"/>
-                    <field name="name" string="Opportunity"/>
-                    <field name="partner_id" string="Customer" />
+
+                    <field name="partner_id" string="Customer" invisible="1" />
                     <field name="country_id" invisible="1"/>
-                    <field name="date_action"/>
-                    <field name="title_action"/>
+
+
                     <field name="medium_id" invisible="1"/>
                     <field name="campaign_id" invisible="1"/>
                     <field name="source_id" invisible="1"/>
                     <field name="stage_id" invisible="1"/>
                     <field name="planned_revenue" sum="Expected Revenues" invisible="1"/>
                     <field name="probability" avg="Avg. of Probability" invisible="1"/>
-                    <field name="section_id" groups="base.group_multi_salesteams"/>
-                    <field name="user_id"/>
                     <field name="referred" invisible="1"/>
                     <field name="priority" invisible="1"/>
                     <field name="message_unread" invisible="1"/>
@@ -105,6 +109,7 @@
                                 </div>
                                 <field name="country_id" placeholder="Country" options="{&quot;no_open&quot;: True}"/>
                             </div>
+<field name="industry" string="industry"/>
                         </group>
                         <group>
 
@@ -153,6 +158,7 @@
                                 <field name="probability" groups="base.group_no_one"/>
                                 <field name="active"/>
                                 <field name="referred"/>
+                                <field name="refer"/>
                             </group>
                             <group>
                                 <field name="date_open" groups="base.group_no_one"/>
@@ -208,6 +214,8 @@
                         <group>
                             <group>
 <field name="partner_name" string="Company Name"/>
+<field name="TagCust7" />
+<field name="TagCust8" />
 <field name="partner_id" on_change="on_change_partner_id(partner_id)" string="Customer" context="{'default_name': partner_name, 'default_email': email_from, 'default_phone': phone}"/>
                                 <field name="email_from" string="Email" widget="email"/>
 									<field name="phone"/>
@@ -447,18 +455,8 @@
 					<field name="TagDevNotesLT5" />
 					<page string="Upload Data">
 	            <group>
-	                <group>
-						<field name="TagCust12" />
-						<field name="TagCust2" />
-						<field name="TagCust3" />
-						<field name="TagCust4" />
-						<field name="TagCust5" />
-	                </group>
-	                <group>
-						<field name="TagCust6" />
-						<field name="TagCust7" />
-						<field name="TagCust8" />				
-	                </group>
+	               
+	              
 	            </group>
 				<field name="TagDevNotesFT1" />
 				<field name="TagDevNotesFT1H" />

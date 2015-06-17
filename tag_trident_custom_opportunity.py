@@ -5,6 +5,8 @@ class tag_trident_custom_opportunity(osv.osv):
   _inherit = "crm.lead"
 
   _columns = {
+        'refer' : fields.many2one('res.partner', 'Refferal Partners', select=True),
+        'industry': fields.many2one('industry', 'industry', select=True),
     'TagCust1': fields.char('Data Upload ID', size=15),
     'TagCust2': fields.char('Business Type', size=25), 
     'TagCust3': fields.text('Accountant Name', size=50),
@@ -18,7 +20,7 @@ class tag_trident_custom_opportunity(osv.osv):
     'TagCust11': fields.char('Directors drivers licence details', size=100), 
     'TagCust12': fields.char('Website', size=50),
     'TagCust13': fields.char('Other 13', size=25),
-    'TagCust14': fields.date('Settlement'), 
+    'TagCust14': fields.date(' Expected Settlement Date'), 
     'TagCust15': fields.float('Loan Term'), 
     'TagCust16': fields.char('Make',size=25), 
     'TagCust17': fields.char('Model', size=25), 
@@ -181,6 +183,6 @@ class tag_cust_list_5(osv.osv):
         'TagList503': fields.char('Rate %'),
         'TagList504': fields.char('Broker'),
         'TagList505': fields.char('Trident Fee'),
-        'TagList506': fields.char('Lender Fee'),
+        'TagList506': fields.char('Doc Fees'),
         'TagList507': fields.char('Lender Name')
     }
